@@ -1,8 +1,0 @@
-langchain
-langchain_community
-langchain-openai
-pypdf
-
-
-sk-proj-Ys3PoCdTW150xdFF4EYxT3BlbkFJwbTG8BHLWU0wSt5dDJpW
-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
