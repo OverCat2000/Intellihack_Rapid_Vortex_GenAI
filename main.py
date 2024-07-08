@@ -43,7 +43,7 @@ def main():
                 'name': name,
             }
 
-            attachment_p = pathlib.Path('attachments') / f'{name.replace(" ", "")}.jpg'
+            attachment_p = pathlib.Path('attachments') / f'{name}.jpg'
             print(os.path.exists(attachment_p))
         
             html = generate_html2.generate_html(data)
@@ -53,4 +53,3 @@ def main():
                 file.write(html)
         
             send_message(service, mail, 'Invitation to Interview for Data Scientist position', file_name, image_path='images', attachment_path=attachment_p)
-
