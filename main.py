@@ -4,6 +4,7 @@ import generate_html
 import generate_html2
 from send_mail import gmail_authenticate, send_message
 import pathlib
+import os
 
 def main():
     service = gmail_authenticate()
@@ -42,8 +43,8 @@ def main():
                 'name': name,
             }
 
-            attachment_p = pathlib.Path('attachments') / f'{name}.png'
-            print(attachment_p)
+            attachment_p = pathlib.Path('attachments') / f'{name.replace(" ", "")}.jpg'
+            print(os.path.exists(attachment_p))
         
             html = generate_html2.generate_html(data)
             file_name = re.sub(r'\W+', '', mail) + '.html'
@@ -51,7 +52,7 @@ def main():
             with open(file_name, 'w', encoding="utf8") as file:
                 file.write(html)
         
-            send_message(service, mail, 'Invitation to Interview for Data Scientist position', file_name, image_path='images', attachment_path='attachments')
+            send_message(service, mail, 'Invitation to Interview for Data Scientist position', file_name, image_path='images', attachment_path=attachment_p)
 
 
-
+main()

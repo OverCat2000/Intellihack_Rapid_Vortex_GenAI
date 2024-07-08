@@ -84,10 +84,10 @@ def build_message(destination, obj, html_file_path, image_path=None, attachment_
     
     if attachment_path is not None:
         attachment_path = pathlib.Path(attachment_path)
-        attachments = glob.glob(str(attachment_path / '*'))
-
-        for filename in attachments:
-            add_attachment(message, filename)
+        # attachments = glob.glob(str(attachment_path / '*'))
+        if os.path.exists(attachment_path):
+            add_attachment(message, attachment_path)
+        # for filename in attachments:
 
     return {'raw': urlsafe_b64encode(message.as_bytes()).decode()}
 
